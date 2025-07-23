@@ -8,7 +8,6 @@ export default function WikipediaResume() {
         <img src="https://en.wikipedia.org/static/images/icons/wikipedia.png" alt="Wikipedia Logo" className="logo" />
         <ul className="nav-tabs">
           <li><a href="#" className="active">Article</a></li>
-          <li><a href="https://calendly.com/rkanaparti3-gatech/30min" target="_blank">Talk</a></li>
         </ul>
         <div className="search-box">
           <input type="search" placeholder="Search Wikipedia" className="search-input" />
@@ -23,21 +22,13 @@ export default function WikipediaResume() {
           <div className="sidebar">
             <h3>Contents</h3>
             <ul>
-              <li><a href="#current">1 Current Work</a></li>
-              <li><a href="#education">2 Education</a></li>
-              <li><a href="#projects">3 Notable Projects</a></li>
-              <li><a href="#experience">4 Professional Experience</a></li>
-              <li><a href="#skills">5 Technical Skills</a></li>
-              <li><a href="#contact">6 Contact Information</a></li>
-              <li><a href="#references">7 References</a></li>
+              <li><a href="#education">1 Education</a></li>
+              <li><a href="#projects">2 Projects</a></li>
+              <li><a href="#experience">3 Experience</a></li>
+              <li><a href="#contact">4 Contact Information</a></li>
             </ul>
             <h3>Tools</h3>
             <ul>
-              <li><a href="https://calendly.com/rkanaparti3-gatech/30min" target="_blank" rel="noopener noreferrer">Schedule Meeting</a></li>
-              <li><a href="https://scholar.google.com/citations?user=FZc7hOoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-              <li><a href="https://orion-sms.org/" target="_blank" rel="noopener noreferrer">Orion Project</a></li>
-              <li><a href="https://collegedao.io/" target="_blank" rel="noopener noreferrer">CollegeDAO</a></li>
-              <li><a href="https://www.midwestblockchain.org/" target="_blank" rel="noopener noreferrer">MBC 2025</a></li>
             </ul>
           </div>
           <div className="main-content">
@@ -66,7 +57,7 @@ export default function WikipediaResume() {
             </div>
             <div className="info-box">
               <h4>Dmitry Baryshnikov</h4>
-              <img src="/screencapture-rishi-wiki-2025-07-02-22_00_01.png" alt="Dmitry Baryshnikov" />
+              <img src="https://media.licdn.com/dms/image/v2/D4D03AQEt1HJQrR2fzg/profile-displayphoto-shrink_800_800/B4DZZ.xIGEHIAk-/0/1745883530704?e=1758153600&v=beta&t=1ckgpX-DLgJ-NIE8Jbx1oyIW605M9pP--ObpJJUGj80" alt="Dmitry Baryshnikov" />
               <div className="info-row">
                 <span className="info-label">Education</span>
                 <span>Baruch College, CUNY<br />B.S. Mathematics<br />Expected May 2027</span>
@@ -79,79 +70,68 @@ export default function WikipediaResume() {
                 <span className="info-label">GPA</span>
                 <span>3.9 (Dean's List)</span>
               </div>
-              <div className="info-row">
-                <span className="info-label">Occupation</span>
-                <span>Software Engineer,<br />Mathematics Student</span>
-              </div>
-              <div className="info-row">
-                <span className="info-label">Known for</span>
-                <span>Full-Stack Development,<br />Data Analytics</span>
-              </div>
             </div>
-            <p><strong>Dmitry Baryshnikov</strong> is an American software engineer and mathematics student at Baruch College, CUNY. He is known for his work in full-stack development, data analytics, and automation solutions.</p>
-            <p>Baryshnikov has demonstrated excellence in both academic and professional settings, maintaining a 3.9 GPA while working as an Application Development Intern at the NYC Department of Environmental Protection and building custom solutions for clients as a freelance software engineer.</p>
-            <section id="current" className="fade-in visible">
-              <h3>Current Work</h3>
-              <p>Kanaparti is currently focused on building and shipping technology solutions across multiple domains.</p>
-              <p>He is working on creating a second brain for human AI interactions at <a href="https://orion-sms.org/" target="_blank" rel="noopener noreferrer">Orion</a>, a platform designed to enhance human-AI collaboration through advanced interaction paradigms.</p>
-              <p>As a leader in research development and liquid fund management at <a href="https://collegedao.io/" target="_blank" rel="noopener noreferrer">CollegeDAO</a>, he focuses on decentralized autonomous organization initiatives within the educational sector.</p>
-              <p>Kanaparti is also involved in organizing <a href="https://www.midwestblockchain.org/" target="_blank" rel="noopener noreferrer">MBC 2025</a>, which is positioned to become the largest student blockchain conference, expecting over 700 students from more than 50 universities.</p>
+            <p>i build cool stuff</p>
+            <section id="education" className="fade-in visible">
+              <h3>education</h3>
+              <strong>baruch college, cuny</strong>
+              <p>bachelors in computer science & mathematics</p>
+              <p>expected may 2027</p>
+              <p>gpa: 3.9</p>
             </section>
-            <section id="previous" className="fade-in visible">
-              <h3>Previous Work</h3>
-              <p>Kanaparti co-founded <a href="https://www.stride-labs.com/" target="_blank" rel="noopener noreferrer">Stride Labs</a>, where he developed innovative solutions for orthotic manufacturing:</p>
+            <section id="experience" className="fade-in visible">
+              <h3>Work</h3>
+              <strong>summer 25</strong>
+              <p>software engineering intern @ nyc department of environmental protection </p>
               <div className="indent">
-                <p>• Created custom orthotic insoles using proprietary AI technology, reducing production time from 4 hours to one-click generation</p>
-                <p>• Developed a patent-pending AI model for automated orthotic design</p>
-                <p>• Established partnerships with two of the largest orthotic and prosthetic manufacturers in the United States</p>
+                <p>developed and maintained features for paris (permit and request information system)</p>
               </div>
-              <p>As Chief Operating Officer at <a href="https://ngresearch.org/" target="_blank" rel="noopener noreferrer">NextGen Research Institute</a>, he worked to democratize research access:</p>
+              <strong>summer 24</strong>
+              <p>application development intern @ nyc department of environmental protection</p>
               <div className="indent">
-                <p>• Made research opportunities accessible to high school students through affordable mentorship and publishing support</p>
-                <p>• Operated a high school research journal</p>
-                <p>• Generated five-figure revenue for the organization</p>
-                <p>• Processed applications from over 1,000 students</p>
+                <p>developed a mold inspection tracking system to help plan, assign, and route inspectors</p>
+              </div>
+              <strong>other</strong>
+              <p>freelance software engineer<br />jan 2020 – present</p>
+              <div className="indent">
+                <p>designed and developed custom web applications for businesses, focusing on user experience and functionality</p>
               </div>
             </section>
-            <section id="awards" className="fade-in visible">
-              <h3>Awards and Recognition</h3>
-              <p>Kanaparti has received several notable awards and recognitions:</p>
-              <ul className="awards-list">
-                <li><strong>AIME Qualifier</strong> (2× recipient) - Achieved top 2% performance in the American Invitational Mathematics Examination</li>
-                <li><strong>USACO Platinum Division</strong> - Reached the National Platinum Division, representing 0.0086% of U.S. high school students in competitive programming</li>
-                <li><strong>HOSA Competition</strong> - Secured 2nd place in state-level competition</li>
-                <li><strong>"Teen Entrepreneur of the Year"</strong> - Recognized for outstanding entrepreneurial achievements</li>
-              </ul>
-            </section>
-            <section id="thinking" className="fade-in visible">
-              <h3>Areas of Interest</h3>
-              <p>Kanaparti's current research and business interests include:</p>
-              <ul className="awards-list">
-                <li><strong>AI Agents</strong> - Development and implementation of autonomous artificial intelligence systems</li>
-                <li><strong>Web2/Web3 Integration</strong> - The future convergence of traditional and decentralized web technologies</li>
-                <li><strong>Biotechnology</strong> - Applications of technology in biological and medical fields</li>
-              </ul>
+            <section id="projects" className="fade-in visible">
+              <h3>Projects</h3>
+              <div className="indent">
+                <p><strong>Frontier Flight Search</strong> | React, Flask, SQLite | <a href="https://gowilder.net" target="_blank" rel="noopener noreferrer">gowilder.net</a></p>
+                <ul>
+                  <li>Production SaaS travel search serving 150+ daily active users with subscription-based revenue model</li>
+                  <li>Developed web scraping infrastructure collecting real-time flight data from Frontier Airlines with concurrent processing to scrape all pricing and destinations; processed 500k+ requests per day</li>
+                  <li>Built responsive React frontend with TypeScript featuring interactive calendar components, geolocation-based airport suggestions, and real-time seat availability tracking</li>
+                  <li>Designed scalable backend architecture handling multi-fare comparisons with automated booking link generation and deployed on Vercel with serverless functions</li>
+                </ul>
+                <p><strong>Baruch Study Room Booker</strong> | Vite, Python, MongoDB</p>
+                <ul>
+                  <li>Developed a full-stack application used by 100+ Baruch College students to automatically book study rooms, increasing booking success rates by over 70%</li>
+                  <li>Implemented a "watch" feature allowing users to monitor for open study rooms and automatically reserve them within seconds of availability, reducing manual checking time by 90%</li>
+                  <li>Built the frontend with Vite, achieving sub-second page load times and a modern user experience</li>
+                  <li>Designed and implemented a Python backend with a MongoDB database, managing real-time room availability for 20+ study rooms and automating the booking process</li>
+                </ul>
+                <p><strong>Sports Betting Analytics Platform</strong> | React, Express.js, MongoDB</p>
+                <ul>
+                  <li>Full-stack sports betting analytics application providing tools to identify profitable betting opportunities</li>
+                  <li>Developed infrastructure for collecting live odds from 10+ sportsbooks with sub-1-second latency</li>
+                  <li>Built analytics tools detecting low-hold betting markets (&lt;3% profit margins) using expected value calculations</li>
+                  <li>Designed scalable backend architecture handling thousands of concurrent odds updates with automated optimal stake calculations and deployed on Vercel with CI/CD pipeline</li>
+                </ul>
+              </div>
             </section>
             <section id="contact" className="fade-in visible">
               <h3>Contact Information</h3>
-              <p>For professional inquiries, Kanaparti can be reached at:</p>
-              <p className="email">rkanaparti3 [@] gatech [dot] edu</p>
+
+              <p className="email">dmitry.baryshnikov [@] baruch [dot] cuny [dot] edu</p>
               <p><strong>External links:</strong></p>
               <div className="social-links">
-                <a href="https://www.linkedin.com/in/rishi-kanaparti123/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://github.com/rishi1123d" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://x.com/0x_rxkvys" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+                <a href="https://www.linkedin.com/in/dmitry-baryshnikov-326382156/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/dimaa-b" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
-            </section>
-            
-            <section id="references" className="fade-in visible">
-              <h3>References</h3>
-              <ol className="references-list">
-                <li><a href="https://scholar.google.com/citations?user=FZc7hOoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar Profile</a></li>
-                <li><a href="https://orion-sms.org/" target="_blank" rel="noopener noreferrer">Orion Project Official Website</a></li>
-                <li><a href="https://collegedao.io/" target="_blank" rel="noopener noreferrer">CollegeDAO Official Website</a></li>
-                <li><a href="https://www.midwestblockchain.org/" target="_blank" rel="noopener noreferrer">Midwest Blockchain Conference 2025</a></li>
-              </ol>
             </section>
           </div>
         </div>

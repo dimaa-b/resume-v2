@@ -1,4 +1,3 @@
-import React from "react";
 import "./WikipediaResume.css";
 
 export default function TitleArea() {

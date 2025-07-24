@@ -1,4 +1,3 @@
-import React from "react";
 import TitleArea from "./TitleArea";
 import InfoBox from "./InfoBox";
 import ResumeSection from "./ResumeSection";

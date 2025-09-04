@@ -1,9 +1,18 @@
-import "./WikipediaResume.css";
+import "../styles/WikipediaResume.css";
+import { TypingAnimation } from './';
+import { ANIMATION_SPEEDS } from "../utils";
 
 export default function TitleArea() {
   return (
     <div className="title-area">
-      <h1>Dmitry Baryshnikov</h1>
+      <h1>
+        <TypingAnimation 
+          text="Dmitry Baryshnikov" 
+          speed={ANIMATION_SPEEDS.TYPING_DEFAULT} 
+          delay={500}
+          showCursor={true}
+        />
+      </h1>
       <div className="language-selector">
         <a href="#" className="language-selector">10 languages</a>
         <div className="language-menu">

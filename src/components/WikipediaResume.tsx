@@ -1,7 +1,5 @@
-import "./WikipediaResume.css";
-import TopNav from "./TopNav";
-import Sidebar from "./Sidebar";
-import MainContent from "./MainContent";
+import "../styles/WikipediaResume.css";
+import { TopNav, Sidebar, MainContent } from './';
 
 export default function WikipediaResume() {
   return (

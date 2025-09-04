@@ -1,4 +1,4 @@
-import "./WikipediaResume.css";
+import "../styles/WikipediaResume.css";
 
 export default function TopNav() {
   return (

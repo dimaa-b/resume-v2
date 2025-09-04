@@ -1,5 +1,5 @@
-import './App.css';
-import WikipediaResume from './WikipediaResume';
+import './styles/App.css';
+import { WikipediaResume } from './components';
 
 function App() {
   return (

@@ -38,6 +38,12 @@ export default function MainContent() {
           <p>developed a mold inspection tracking system to help plan, assign, and route inspectors</p>
         </div>
         <br/>
+        <strong>2022 – present</strong>
+        <p>Founder &amp; Lead Engineer @ Gowild Frontier (SaaS) — <a href="https://gowilder.net" target="_blank" rel="noopener noreferrer">gowilder.net</a></p>
+        <div className="indent">
+          <p>Built and scaled a production SaaS travel search platform serving 150+ daily users. Implemented real-time flight data collection, subscription billing, and analytics to drive recurring revenue.</p>
+        </div>
+        <br/>
         <strong>other</strong>
         <p>freelance software engineer<br />jan 2020 – present</p>
         <div className="indent">
@@ -45,11 +51,6 @@ export default function MainContent() {
         </div>
       </ResumeSection>
       <ResumeSection id="projects" title="Projects">
-        <strong>frontier flight search</strong>
-        <p>react, flask, sqlite | <a href="https://gowilder.net" target="_blank" rel="noopener noreferrer">gowilder.net</a></p>
-        <div className="indent">
-          <p>production saas travel search platform serving 150+ daily users with real-time flight data scraping and subscription revenue model</p>
-        </div>
         <strong>baruch study room booker</strong>
         <p>vite, python, mongodb</p>
         <div className="indent">

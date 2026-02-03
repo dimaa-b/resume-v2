@@ -1,7 +1,12 @@
 import "../styles/WikipediaResume.css";
 import { useWikiEdit } from '../context';
 
-export default function TopNav() {
+interface TopNavProps {
+  isNightMode: boolean;
+  onToggleTheme: () => void;
+}
+
+export default function TopNav({ isNightMode, onToggleTheme }: TopNavProps) {
   const { phase, isComplete } = useWikiEdit();
   
   return (
@@ -33,6 +38,9 @@ export default function TopNav() {
         />
       </div>
       <div className="user-tools">
+        <a href="#" onClick={(e) => { e.preventDefault(); onToggleTheme(); }} title={isNightMode ? 'Switch to light mode' : 'Switch to dark mode'}>
+          {isNightMode ? '☀️' : '🌙'}
+        </a>
         <a href="#">Create account</a>
         <a href="#">Log in</a>
       </div>

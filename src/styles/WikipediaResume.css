@@ -289,11 +289,12 @@
   float: right;
   width: 24em;
   margin: 0.5em 0 1em 1em;
-  border: 1px solid #a2a9b1;
-  background-color: #f8f9fa;
+  border: 1px solid #e8c9a0;
+  background-color: #fff8f0;
   padding: 1.2em;
   font-size: 1em;
   clear: right;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.08);
 }
 
 .info-box h4 {
@@ -301,8 +302,8 @@
   font-size: 1.3em;
   font-weight: bold;
   text-align: center;
-  color: #000;
-  border-bottom: 1px solid #a2a9b1;
+  color: #5d4037;
+  border-bottom: 1px solid #e8c9a0;
   padding-bottom: 0.5em;
 }
 

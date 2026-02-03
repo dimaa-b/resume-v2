@@ -11,3 +11,4 @@ export { default as ScrollProgress } from './ScrollProgress';
 export { default as WikiLoadingOverlay } from './WikiLoadingOverlay';
 export { default as WikiTypewriter } from './WikiTypewriter';
 export { default as WikiReveal } from './WikiReveal';
+export { default as PaperBackground } from './PaperBackground';

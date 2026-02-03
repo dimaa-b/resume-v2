@@ -1,9 +1,18 @@
+import { useState } from 'react';
 import './styles/App.css';
-import { WikipediaResume } from './components';
+import { WikipediaResume, PaperBackground } from './components';
 
 function App() {
+  const [isNightMode, setIsNightMode] = useState(false);
+
   return (
-    <WikipediaResume />
+    <div className={isNightMode ? 'night-mode' : 'day-mode'}>
+      {isNightMode && <PaperBackground />}
+      <WikipediaResume 
+        isNightMode={isNightMode} 
+        onToggleTheme={() => setIsNightMode(!isNightMode)} 
+      />
+    </div>
   );
 }
 

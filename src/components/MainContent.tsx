@@ -1,19 +1,32 @@
 import { TitleArea, InfoBox, ResumeSection } from './';
 import { SOCIAL_LINKS } from '../utils';
+import { useWikiEdit } from '../context';
 
 export default function MainContent() {
+  const { currentSection, isComplete } = useWikiEdit();
+  const introRevealed = isComplete || currentSection >= 2;
+
   return (
     <div className="main-content">
       <TitleArea />
       <InfoBox />
-      <p>i build cool stuff</p>
-      <ResumeSection id="education" title="Education">
+      
+      <p className={`wiki-intro ${introRevealed ? 'revealed' : 'pending'}`}>
+        {introRevealed ? (
+          'i build cool stuff'
+        ) : (
+          <span className="wiki-skeleton-text"></span>
+        )}
+      </p>
+
+      <ResumeSection id="education" title="Education" revealIndex={3}>
         <strong>baruch college, cuny</strong>
         <p>bachelors in computer science & mathematics</p>
         <p>expected may 2027</p>
         <p>gpa: 3.9</p>
       </ResumeSection>
-      <ResumeSection id="leadership" title="Leadership">
+
+      <ResumeSection id="leadership" title="Leadership" revealIndex={4}>
         <strong>sept 2025 – present</strong>
         <p>peer mentor @ cuny baruch college</p>
         <div className="indent">
@@ -25,7 +38,8 @@ export default function MainContent() {
           <p>provide small group and one-on-one tutoring sessions to help students understand course material and develop academic strategies</p>
         </div>
       </ResumeSection>
-      <ResumeSection id="experience" title="Work">
+
+      <ResumeSection id="experience" title="Work" revealIndex={5}>
         <strong>summer 25</strong>
         <p>software engineering intern @ nyc department of environmental protection </p>
         <div className="indent">
@@ -50,7 +64,8 @@ export default function MainContent() {
           <p>designed and developed custom web applications for businesses, focusing on user experience and functionality</p>
         </div>
       </ResumeSection>
-      <ResumeSection id="projects" title="Projects">
+
+      <ResumeSection id="projects" title="Projects" revealIndex={6}>
         <strong>baruch study room booker</strong>
         <p>vite, python, mongodb</p>
         <div className="indent">
@@ -62,22 +77,34 @@ export default function MainContent() {
           <p>full-stack analytics platform that collects live odds from 10+ sportsbooks to identify profitable betting opportunities with sub-1-second latency</p>
         </div>
       </ResumeSection>
-      <ResumeSection id="contact" title="Contact Information">
+
+      <ResumeSection id="contact" title="Contact Information" revealIndex={7}>
         <p className="email">dmitry.baryshnikov [@] baruch [dot] cuny [dot] edu</p>
         <p><strong>External links:</strong></p>
         <div className="social-links">
-          {SOCIAL_LINKS.map((link) => (
-            <a 
-              key={link.platform}
-              href={link.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              {link.platform}
-            </a>
-          ))}
+          {SOCIAL_LINKS.map((link, index) => {
+            const linkRevealed = isComplete || currentSection >= 8;
+            return (
+              <a 
+                key={link.platform}
+                href={link.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`wiki-social-link ${linkRevealed ? 'revealed' : 'pending'}`}
+                style={{ '--link-index': index } as React.CSSProperties}
+              >
+                {linkRevealed ? link.platform : '████'}
+              </a>
+            );
+          })}
         </div>
       </ResumeSection>
+
+      {isComplete && (
+        <div className="wiki-published-notice">
+          <span className="wiki-check">✓</span> This article was last edited just now
+        </div>
+      )}
     </div>
   );
-} 
+}

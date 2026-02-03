@@ -3,6 +3,18 @@
   box-sizing: border-box;
 }
 
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0645ad 0%, #3366cc 50%, #0645ad 100%);
+  transform-origin: 0%;
+  z-index: 1000;
+}
+
 .wikipedia-body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
   margin: 0;
@@ -184,7 +196,6 @@
   position: relative;
   max-width: none;
   line-height: 1.6;
-  overflow: hidden;
 }
 
 /* Clearfix for main-content to prevent text from flowing under the info box */
@@ -360,7 +371,6 @@
 /* Sections */
 .main-content section {
   margin-bottom: 1.5em;
-  overflow: hidden;
 }
 
 .main-content h3 {
@@ -372,8 +382,6 @@
   padding-bottom: 0.3em;
   font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
   clear: none;
-  overflow: hidden;
-  margin-right: 25em; /* Ensure heading doesn't extend under info box */
 }
 
 .main-content h3:first-of-type {
@@ -495,8 +503,6 @@
 /* Animation styles */
 .resume-section {
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(30px);
-  opacity: 0;
 }
 
 .resume-section.visible {
@@ -507,6 +513,32 @@
 .resume-section.hidden {
   transform: translateY(30px);
   opacity: 0;
+}
+
+/* Wiki animation overrides - reset base animation for wiki styles */
+.resume-section.wiki-pending {
+  transform: none !important;
+  opacity: 0.7 !important;
+}
+
+.resume-section.wiki-revealed {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* New wiki resume section - completely separate from old .resume-section */
+.wiki-resume-section {
+  margin-bottom: 1.5em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.wiki-resume-section.wiki-pending {
+  opacity: 0.7;
+}
+
+.wiki-resume-section.wiki-revealed {
+  opacity: 1;
 }
 
 /* Animated counter styles */
@@ -665,4 +697,457 @@ button, input, select, textarea {
   color: #222;
   font-style: normal;
   padding-left: 0;
+}
+
+/* ==========================================
+   Wikipedia Edit Animation System
+   ========================================== */
+
+/* Loading Overlay */
+.wiki-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.wiki-overlay.published {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.wiki-overlay-content {
+  text-align: center;
+}
+
+.wiki-globe-loader {
+  margin-bottom: 1rem;
+}
+
+.wiki-globe-spin {
+  width: 80px;
+  height: 80px;
+  animation: wiki-spin 2s linear infinite;
+}
+
+@keyframes wiki-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.wiki-loading-text {
+  font-size: 1.1rem;
+  color: #54595d;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.wiki-edit-indicator {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.wiki-edit-icon {
+  display: inline-block;
+  animation: wiki-write 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes wiki-write {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(5deg); }
+}
+
+.wiki-blink {
+  animation: wiki-blink 0.8s step-end infinite;
+  color: #0645ad;
+}
+
+@keyframes wiki-blink {
+  50% { opacity: 0; }
+}
+
+.wiki-dots::after {
+  content: '';
+  animation: wiki-dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes wiki-dots {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+  100% { content: ''; }
+}
+
+.wiki-save-bar {
+  width: 300px;
+  height: 8px;
+  background: #eaecf0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.wiki-save-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #36c 0%, #0645ad 100%);
+  transition: width 0.1s ease;
+  border-radius: 4px;
+}
+
+/* Top Nav Edit States */
+.top-nav.editing .nav-tabs a.editing {
+  background-color: #fef6e7;
+  border-color: #fc3;
+  color: #000;
+}
+
+.wiki-unsaved {
+  color: #d33 !important;
+  font-size: 0.85em;
+  background: transparent !important;
+  border: none !important;
+}
+
+.wiki-tab-fade-in {
+  animation: wiki-fade-in 0.3s ease;
+}
+
+.logo.spinning {
+  animation: wiki-spin 1s linear infinite;
+}
+
+/* Sidebar Reveal */
+.wiki-sidebar-item {
+  transition: all 0.3s ease;
+}
+
+.wiki-sidebar-item.pending a {
+  color: #a2a9b1;
+  pointer-events: none;
+  font-family: monospace;
+  letter-spacing: -1px;
+}
+
+.wiki-sidebar-item.revealed {
+  animation: wiki-slide-in 0.4s ease forwards;
+}
+
+@keyframes wiki-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.wiki-sidebar-item.revealed a.disabled {
+  pointer-events: none;
+}
+
+.wiki-tool-link {
+  color: #54595d !important;
+  font-size: 0.9em;
+}
+
+/* InfoBox States */
+.info-box.pending {
+  background: linear-gradient(135deg, #f8f9fa 0%, #eaecf0 100%);
+}
+
+.info-box.revealed {
+  animation: wiki-reveal-box 0.5s ease forwards;
+}
+
+@keyframes wiki-reveal-box {
+  from {
+    background: linear-gradient(135deg, #fef6e7 0%, #fef6e7 100%);
+  }
+  to {
+    background: #f8f9fa;
+  }
+}
+
+.info-box-image.loading {
+  background: #eaecf0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  border: 2px dashed #a2a9b1;
+  border-radius: 4px;
+}
+
+.wiki-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #72777d;
+  font-size: 0.9em;
+}
+
+.wiki-image-placeholder span:first-child {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-box-image.revealed img {
+  animation: wiki-image-reveal 0.6s ease forwards;
+}
+
+@keyframes wiki-image-reveal {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.wiki-skeleton {
+  background: linear-gradient(90deg, #eaecf0 25%, #f8f9fa 50%, #eaecf0 75%);
+  background-size: 200% 100%;
+  animation: wiki-shimmer 1.5s infinite;
+  min-height: 1.5em;
+  border-radius: 4px;
+}
+
+@keyframes wiki-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.wiki-redact-line {
+  display: inline-block;
+  width: 100%;
+  height: 1em;
+  background: #eaecf0;
+  border-radius: 2px;
+}
+
+.wiki-edit-notice {
+  text-align: center;
+  padding: 0.5rem;
+  color: #72777d;
+  font-size: 0.85em;
+  border-top: 1px solid #eaecf0;
+  margin-top: 0.5rem;
+}
+
+.wiki-edit-icon-small {
+  display: inline-block;
+  animation: wiki-write 0.5s ease-in-out infinite alternate;
+}
+
+/* Section Reveal States */
+/* Note: base styles are in the wiki animation overrides section above */
+
+.resume-section.wiki-revealed {
+  animation: wiki-section-reveal 0.5s ease forwards;
+}
+
+@keyframes wiki-section-reveal {
+  from {
+    background: #fef6e7;
+  }
+  to {
+    background: transparent;
+  }
+}
+
+.wiki-section-title-pending {
+  color: #a2a9b1;
+}
+
+.wiki-section-title-revealed {
+  animation: wiki-title-reveal 0.4s ease forwards;
+}
+
+@keyframes wiki-title-reveal {
+  from { color: #0645ad; }
+  to { color: #000; }
+}
+
+.wiki-bracket {
+  color: #54595d;
+  font-weight: normal;
+  font-size: 0.85em;
+}
+
+.wiki-edit-link {
+  color: #0645ad;
+  font-weight: normal;
+  font-size: 0.85em;
+  text-decoration: none;
+}
+
+.wiki-edit-link:hover {
+  text-decoration: underline;
+}
+
+.wiki-skeleton-title {
+  display: inline-block;
+  width: 150px;
+  height: 1.2em;
+  background: linear-gradient(90deg, #eaecf0 25%, #f8f9fa 50%, #eaecf0 75%);
+  background-size: 200% 100%;
+  animation: wiki-shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.wiki-typing-indicator {
+  margin-left: 0.5rem;
+  color: #0645ad;
+}
+
+.wiki-typing-indicator span {
+  animation: wiki-typing-dot 1.4s infinite;
+  animation-fill-mode: both;
+}
+
+.wiki-typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.wiki-typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes wiki-typing-dot {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+.wiki-section-content {
+  opacity: 1;
+}
+
+.wiki-section-content.hidden {
+  min-height: 100px;
+}
+
+.wiki-section-content.visible {
+  opacity: 1;
+}
+
+@keyframes wiki-content-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wiki-content-skeleton {
+  padding: 1rem 0;
+}
+
+.wiki-skeleton-line {
+  height: 1em;
+  background: linear-gradient(90deg, #eaecf0 25%, #f8f9fa 50%, #eaecf0 75%);
+  background-size: 200% 100%;
+  animation: wiki-shimmer 1.5s infinite;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+/* Intro Text */
+.wiki-intro.pending .wiki-skeleton-text {
+  display: inline-block;
+  width: 150px;
+  height: 1em;
+  background: linear-gradient(90deg, #eaecf0 25%, #f8f9fa 50%, #eaecf0 75%);
+  background-size: 200% 100%;
+  animation: wiki-shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.wiki-intro.revealed {
+  animation: wiki-text-reveal 0.4s ease forwards;
+}
+
+@keyframes wiki-text-reveal {
+  from {
+    color: #0645ad;
+    background: #fef6e7;
+  }
+  to {
+    color: inherit;
+    background: transparent;
+  }
+}
+
+/* Social Links */
+.wiki-social-link.pending {
+  color: #a2a9b1 !important;
+  font-family: monospace;
+  pointer-events: none;
+}
+
+.wiki-social-link.revealed {
+  animation: wiki-link-reveal 0.3s ease forwards;
+  animation-delay: calc(var(--link-index) * 0.1s);
+}
+
+@keyframes wiki-link-reveal {
+  from {
+    background: #fef6e7;
+  }
+  to {
+    background: transparent;
+  }
+}
+
+/* Published Notice */
+.wiki-published-notice {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  color: #14866d;
+  font-size: 0.9em;
+  border-top: 1px solid #eaecf0;
+  animation: wiki-fade-in 0.5s ease forwards;
+}
+
+.wiki-check {
+  color: #14866d;
+  font-weight: bold;
+}
+
+@keyframes wiki-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Publish Progress Bar */
+.wiki-publish-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #eaecf0;
+  z-index: 10000;
+}
+
+.wiki-publish-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #14866d 0%, #36c 100%);
+  transition: width 0.1s ease;
 }

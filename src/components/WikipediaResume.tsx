@@ -1,16 +1,20 @@
 import "../styles/WikipediaResume.css";
-import { TopNav, Sidebar, MainContent } from './';
+import { WikiEditProvider } from '../context';
+import { TopNav, Sidebar, MainContent, WikiLoadingOverlay } from './';
 
 export default function WikipediaResume() {
   return (
-    <div className="wikipedia-body">
-      <TopNav />
-      <div className="page-container">
-        <div className="container">
-          <Sidebar />
-          <MainContent />
+    <WikiEditProvider totalSections={8}>
+      <div className="wikipedia-body">
+        <WikiLoadingOverlay />
+        <TopNav />
+        <div className="page-container">
+          <div className="container">
+            <Sidebar />
+            <MainContent />
+          </div>
         </div>
       </div>
-    </div>
+    </WikiEditProvider>
   );
 }
